@@ -7,12 +7,31 @@
 .game-board {
     position: relative;
     border: black solid 1px;
+    height: 400px;
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
 }
 
 .persona {
+    position: absolute;
+    bottom: 0;
     width: 100px;
 }
 
 .energy-ball {
+    position: absolute;
     width: 50px;
+    bottom: 0;
+    animation: energy-ball-animation 2s linear infinite; 
+}
+
+@keyframes energy-ball-animation {
+    from {
+        right: -50px;
+    }
+
+    to {
+        right: 100%;
+    }
 }
