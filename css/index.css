@@ -20,14 +20,14 @@
 }
 
 .jump {
-    animation: jump-animation 500ms ease-out ;
+    animation: jump-animation 600ms ease-out ;
 }
 
 .energy-ball {
     position: absolute;
     width: 50px;
-    bottom: 0;
-    animation: energy-ball-animation 2s linear infinite; 
+    bottom: 20px;
+    animation: energy-ball-animation 2s linear infinite;
 }
 
 @keyframes energy-ball-animation {
@@ -46,7 +46,7 @@
     }
 
     40% {
-        bottom: 80px;
+        bottom: 90px;
     }
 
     60% {
