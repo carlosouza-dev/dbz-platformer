@@ -6,12 +6,13 @@
 
 .game-board {
     position: relative;
-    background: linear-gradient(#87CEEB, #E0F6FF);
-    border-bottom: green solid 20px;
+    background-image: url("../assets/images/background.png");
+    border-bottom: green solid 1px;
     height: 400px;
     width: 100%;
     margin: auto;
     overflow: hidden;
+    animation: background-animation 5s linear infinite;
 }
 
 .persona {
@@ -29,6 +30,10 @@
     width: 50px;
     bottom: 20px;
     animation: energy-ball-animation 2s linear infinite;
+}
+
+.pause {
+    animation-play-state: paused !important;
 }
 
 @keyframes energy-ball-animation {
@@ -56,5 +61,16 @@
 
     100% {
         bottom: 0;
+    }
+}
+
+@keyframes background-animation {
+    from{
+        background-position: left;
+    }
+
+
+    to {
+        background-position: right;
     }
 }

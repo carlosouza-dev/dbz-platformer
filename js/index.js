@@ -1,5 +1,6 @@
 const persona = document.querySelector('.persona');
 const energyBall = document.querySelector('.energy-ball');
+const scenario = document.querySelector('.game-board')
 
 document.addEventListener('keydown', jump);
 
@@ -25,6 +26,8 @@ const loop = setInterval(() => {
 
         persona.src = "assets/images/goku-dead.png";
         persona.style.marginBottom = "-10px";
+
+        scenario.classList.add('pause');
 
         clearInterval(loop); 
     }
