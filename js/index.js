@@ -1,3 +1,5 @@
+let isDead = false;
+
 const persona = document.querySelector('.persona');
 const energyBall = document.querySelector('.energy-ball');
 const scenario = document.querySelector('.game-board')
@@ -7,6 +9,8 @@ let screamAudio = new Audio('../assets/audio/scream.mp3');
 document.addEventListener('keydown', jump);
 
 function jump(){
+    if (isDead) return;
+    
     persona.src = "assets/images/goku-jumping.png";
     persona.classList.add('jump');
 
@@ -21,6 +25,8 @@ const loop = setInterval(() => {
     const personaPosition = Number(window.getComputedStyle(persona).bottom.replace("px", ""));
 
     if (energyBallPosition < 70 && energyBallPosition > 0 && personaPosition < 60){
+        isDead = true;
+
         explosionAudio.play();
         screamAudio.play();
 
