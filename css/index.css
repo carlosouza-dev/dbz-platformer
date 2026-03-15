@@ -6,9 +6,10 @@
 
 .game-board {
     position: relative;
-    border: black solid 1px;
+    background: linear-gradient(#87CEEB, #E0F6FF);
+    border-bottom: green solid 20px;
     height: 400px;
-    width: 80%;
+    width: 100%;
     margin: auto;
     overflow: hidden;
 }
