@@ -10,6 +10,8 @@ class Persona {
         this.#initializePosition();
 
         this.#isDead = false;
+
+        this.observers = []
     }
 
     #initializePosition() {
@@ -23,5 +25,17 @@ class Persona {
 
     dead() {
         this.#isDead = true;
+    }
+
+    addObserver(observer) {
+        this.observers.push(observer);
+    }
+
+    addObserverList(observerList){
+        this.observers.push(...observerList);
+    }
+
+    notifyObservers(){
+        this.observers.forEach((observer) => observer.update());
     }
 }

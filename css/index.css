@@ -4,15 +4,50 @@
     box-sizing: border-box;
 }
 
-.game-board {
+.score {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    margin-top: 10px;
+}
+
+.game-background {
     position: relative;
-    background-image: url("../assets/images/background.png");
+    background-image: linear-gradient(to top, #FCE694, #E88D67, #D64541);
     border-bottom: green solid 1px;
+    border: 1px solid black;
     height: 400px;
-    width: 100%;
+    width: 800px;
     margin: auto;
     overflow: hidden;
-    animation: background-animation 5s linear infinite;
+}
+
+.clouds {
+    background-image: url('../assets/images/clouds.png');
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    animation: background-animation  20s linear infinite;
+}
+
+.mountains-far-away {
+    background-image: url('../assets/images/mountains-far-away.png');
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: -10px;
+    width: 100%;
+    height: 80%;
+    animation: background-animation  50s linear infinite;
+}
+
+.mountains-closer {
+    background-image: url('../assets/images/mountains-closer.png');
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    bottom: -50px;
+    animation: background-animation  5s linear infinite;
 }
 
 .persona {

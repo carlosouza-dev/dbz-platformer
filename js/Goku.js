@@ -17,6 +17,7 @@ class Goku extends Persona {
         this.#jumpAudio = new Audio('./assets/audios/goku-jump.mp3');
 
         this.element.src = this.#runningImgPath;
+
     }
 
     jump() {
@@ -39,6 +40,8 @@ class Goku extends Persona {
         this.element.src = this.#deadingImgPath
         this.element.style.marginBottom = "-10px"; 
         this.#screamAudio.play();
+
+        this.notifyObservers();
     }
 
 }
