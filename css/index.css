@@ -4,21 +4,25 @@
     box-sizing: border-box;
 }
 
+body {
+    background-image: linear-gradient(to top, rgb(165, 128, 42) 70%, rgb(115, 128, 0));
+}
+
 .score {
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: sticky;
+    top: 10px;
     color: white;
-    margin-top: 10px;
+    z-index: 1;
 }
 
 .game-background {
     position: relative;
     background-image: linear-gradient(to top, #FCE694, #E88D67, #D64541);
-    border-bottom: green solid 1px;
-    border: 1px solid black;
-    height: 400px;
-    width: 800px;
-    margin: auto;
+    border-bottom: 10px solid rgb(82, 99, 7);
+    height: 600px;
+    width: 100%;
     overflow: hidden;
 }
 
@@ -27,27 +31,28 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    animation: background-animation  20s linear infinite;
+    top: 0;
+    animation: background-animation  60s linear infinite;
 }
 
 .mountains-far-away {
     background-image: url('../assets/images/mountains-far-away.png');
-    background-repeat: no-repeat;
+    background-repeat: repeat-x;
     position: absolute;
-    bottom: -10px;
+    bottom: 30px;
     width: 100%;
-    height: 80%;
-    animation: background-animation  50s linear infinite;
+    height: 252px;
+    animation: background-animation  40s linear infinite;
 }
 
 .mountains-closer {
     background-image: url('../assets/images/mountains-closer.png');
-    background-repeat: no-repeat;
+    background-repeat: repeat-x;
     position: absolute;
     width: 100%;
-    height: 50%;
-    bottom: -50px;
-    animation: background-animation  5s linear infinite;
+    height: 168px;
+    bottom: 0px;
+    animation: background-animation  10s linear infinite;
 }
 
 .persona {
@@ -101,11 +106,11 @@
 
 @keyframes background-animation {
     from{
-        background-position: left;
+        background-position: 0 0;
     }
 
 
     to {
-        background-position: right;
+        background-position: -1024px 0;
     }
 }
