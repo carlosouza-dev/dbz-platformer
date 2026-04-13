@@ -1,12 +1,6 @@
 let explosionAudio = new Audio('assets/audios/energy-collision.mp3');
 const goku = new Goku();
 
-goku.addObserverList([
-    new Layer('.clouds'),
-    new Layer('.mountains-far-away'),
-    new Layer('.mountains-closer')
-]);
-
 const energyBall = document.querySelector('.energy-ball');
 const persona = document.querySelector('.persona');
 const score = document.querySelector('.score');

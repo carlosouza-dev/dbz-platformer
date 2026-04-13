@@ -1,22 +1,34 @@
 class Persona {
 
     #isDead;
+    #DeathEvent;
+    #LevelUpEvent;
 
     constructor(selector){
         this.element = document.querySelector(selector);
         this.positionX = 0;
         this.positionY = 0;
 
-        this.#initializePosition();
+        this.#DeathEvent = new DeathEvent();
+        this.#LevelUpEvent = new LevelUpEvent();
 
         this.#isDead = false;
 
-        this.observers = []
+        this.#initializePosition();
+        this.#initializeObservers();
     }
 
     #initializePosition() {
         this.element.style.rigth = this.positionX;
         this.element.style.bottom = this.positionY;
+    }
+
+    #initializeObservers(){
+        this.#DeathEvent.addObservers([
+            new Layer('.clouds'),
+            new Layer('.mountains-far-away'),
+            new Layer('.mountains-closer')
+        ]);
     }
 
     isDead() {
@@ -25,17 +37,6 @@ class Persona {
 
     dead() {
         this.#isDead = true;
-    }
-
-    addObserver(observer) {
-        this.observers.push(observer);
-    }
-
-    addObserverList(observerList){
-        this.observers.push(...observerList);
-    }
-
-    notifyObservers(){
-        this.observers.forEach((observer) => observer.update());
+        this.#DeathEvent.notifyObservers();
     }
 }

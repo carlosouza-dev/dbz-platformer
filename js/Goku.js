@@ -41,7 +41,7 @@ class Goku extends Persona {
         this.element.style.marginBottom = "-10px"; 
         this.#screamAudio.play();
 
-        this.notifyObservers();
+        
     }
 
 }
