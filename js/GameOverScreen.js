@@ -16,10 +16,13 @@ class GameOverScreen {
 
     update(event){
         if(event.type == Event.DEATH_EVENT){
+            let gameOverSound = new Audio("assets/audios/game-over.mp3");
             let scoreFinal = Score.instance().getScore();
             this.#score.innerText = `${scoreFinal}`;
+
             setTimeout(()=> {
                 this.#container.style.display = "flex";
+                gameOverSound.play();
             }, 200);
         }
     }
