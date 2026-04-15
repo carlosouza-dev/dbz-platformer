@@ -27,7 +27,9 @@ class Persona {
         this.#DeathEvent.addObservers([
             new Layer('.clouds'),
             new Layer('.mountains-far-away'),
-            new Layer('.mountains-closer')
+            new Layer('.mountains-closer'),
+            new GameOverScreen(),
+            Score.instance()
         ]);
     }
 

@@ -76,6 +76,61 @@ body {
     animation-play-state: paused !important;
 }
 
+.game-over {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0, 0, 0, 0.7); 
+    z-index: 2;       
+}
+
+.game-over-box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#game-over-title {
+    font-family: monospace;
+    font-size: 38px;
+    font-weight: bolder;
+}
+
+
+#score-final {
+    font-family: monospace;
+    text-align: center;
+    color: black;
+}
+
+.restart-btn {
+    background-color: orange;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px;
+
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
+}
+
+.restart-btn:active{
+    transform: scale(0.95);
+}
+
 @keyframes energy-ball-animation {
     from {
         right: -25%;

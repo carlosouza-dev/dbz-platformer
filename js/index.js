@@ -3,7 +3,7 @@ const goku = new Goku();
 
 const energyBall = document.querySelector('.energy-ball');
 const persona = document.querySelector('.persona');
-const score = document.querySelector('.score');
+const score = Score.instance();
 
 document.addEventListener('keydown', (event) => {
     if (event.code == 'Space'){
@@ -11,14 +11,11 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-let contSeg = 0;
-
 const loopScore = setInterval(() => {
     if (goku.isDead()){
         clearInterval(loopScore);
     }
-    contSeg += 1;
-    score.textContent = String(contSeg);
+    score.increase();
 }, 1000);
 
 const loopGame = setInterval(() => {
