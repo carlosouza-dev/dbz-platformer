@@ -1,4 +1,7 @@
 let explosionAudio = new Audio('assets/audios/energy-collision.mp3');
+let audio = document.querySelector(".audio");
+audio.volume = 0.05;
+
 const goku = new Goku();
 
 const energyBall = document.querySelector('.energy-ball');
@@ -24,6 +27,8 @@ const loopGame = setInterval(() => {
 
     if (energyBallPosition < 70 && energyBallPosition > 0 && personaPosition < 60){
         goku.dead();
+
+        audio.pause();
 
         explosionAudio.play();
         energyBall.style.animation = 'none';
