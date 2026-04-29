@@ -8,14 +8,13 @@
     <link rel="shortcut icon" href="assets/images/icon.png" type="image/x-png">
 </head>
 <body>
-    <audio src="assets/audios/background-sound.mp3" autoplay class="audio"></audio>
+    <audio src="assets/audios/background-sound.mp3" autoplay loop class="audio"></audio>
     <div class="game-background">
         <h1 class="score">0</h1>
         <div class="clouds"></div>
         <div class="mountains-far-away"></div>
         <div class="mountains-closer"></div>
         <img class="persona">
-        <img src="assets/images/energy-ball.gif" class="energy-ball">
 
         <div class="game-over">
             <div class="game-over-box">
@@ -26,6 +25,8 @@
         </div>
     </div>
 
+    <script src="js/Obstacle.js"></script>
+    <script src="js/EnergyBall.js"></script>
     <script src="js/Event.js"></script>
     <script src="js/DeathEvent.js"></script>
     <script src="js/LevelUpEvent.js"></script>

@@ -66,10 +66,12 @@ body {
 }
 
 .energy-ball {
-    position: absolute;
     width: 50px;
-    bottom: 20px;
-    animation: energy-ball-animation 2s linear infinite;
+    height: 50px;
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .pause {
