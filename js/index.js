@@ -1,10 +1,10 @@
 let explosionAudio = new Audio('assets/audios/energy-collision.mp3');
-let audio = document.querySelector(".audio");
-audio.volume = 0.05;
+const audio = document.querySelector('.audio');
+let speed = 10;
 
 const goku = new Goku();
 
-let energyBall = new EnergyBall();
+let energyBalls = [];
 const persona = document.querySelector('.persona');
 const score = Score.instance();
 
@@ -21,27 +21,42 @@ const loopScore = setInterval(() => {
     score.increase();
 }, 1000);
 
-const loopObstacle = setInterval(() => {
-    if (goku.isDead()){
-        clearInterval(loopObstacle)
+function createEnergyBall(){
+    const obstacle = new EnergyBall(speed);
+
+    speed += 2;
+
+    energyBalls.push(obstacle);
+    console.log(energyBalls.length);
+
+    if (energyBalls.length >= 10){
+        energyBalls.splice(1, 1);
     }
-    energyBall.destroy();
-    energyBall = new EnergyBall();
-}, 2000)
+    
+}
 
-const loopGame = setInterval(() => {
-    energyBall.update();
-    const personaPosition = Number(window.getComputedStyle(persona).bottom.replace("px", ""));
+function gameLoop(){
+    for(const energyBall of energyBalls){
 
-    if (energyBall.x < 70 && energyBall.x > 0 && personaPosition < 60){
-        energyBall.destroy();
-        goku.dead();
+        energyBall.update();
 
-        audio.pause();
+        const personaPosition = Number(window.getComputedStyle(persona).bottom.replace("px", ""));
 
-        explosionAudio.play();
+        if (energyBall.x < 70 && energyBall.x > 0 && energyBall.y < 100 && personaPosition < 60){
+            energyBalls.forEach((energyBall) => energyBall.destroy());
+            goku.dead();
 
-        clearInterval(loopGame); 
+            audio.pause();
+
+            explosionAudio.play();
+            clearInterval(loop);
+        } 
     }
-}, 10)
 
+    if (!goku.isDead()){
+        requestAnimationFrame(gameLoop)
+    }
+}
+
+const loop = setInterval(createEnergyBall, 2000);
+gameLoop();

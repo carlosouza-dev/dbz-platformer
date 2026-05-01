@@ -6,7 +6,7 @@ class Obstacle {
     this.element.style.backgroundImage = `url('${imagePath}')`;
     
     this.x = window.innerWidth;
-    this.y = 20;
+    this.y = 0;
     
     document.querySelector('.game-background').appendChild(this.element);
     }
