@@ -4,24 +4,23 @@ class Persona {
     #DeathEvent;
     #LevelUpEvent;
 
-    constructor(selector){
-        this.element = document.querySelector(selector);
-        this.positionX = 0;
-        this.positionY = 0;
+    constructor(){
+        this.element = document.createElement('img');
+        this.element.classList.add('persona');
+        this.x = 50;
+        this.y = 0;
 
         this.#DeathEvent = new DeathEvent();
         this.#LevelUpEvent = new LevelUpEvent();
 
         this.#isDead = false;
 
-        this.#initializePosition();
         this.#initializeObservers();
+        this.draw();
+
+        document.querySelector('.game-background').appendChild(this.element);
     }
 
-    #initializePosition() {
-        this.element.style.rigth = this.positionX;
-        this.element.style.bottom = this.positionY;
-    }
 
     #initializeObservers(){
         this.#DeathEvent.addObservers([
@@ -40,5 +39,10 @@ class Persona {
     dead() {
         this.#isDead = true;
         this.#DeathEvent.notifyObservers();
+    }
+
+    draw() {
+        this.element.style.left = this.x + "px";
+        this.element.style.bottom = this.y + "px";
     }
 }

@@ -24,14 +24,16 @@ class Goku extends Persona {
         if (super.isDead()) return;
 
         this.element.src = this.#jumpingImgPath;
-        this.element.classList.add('jump');
         this.#jumpAudio.play();
+        this.y = 90;
+        this.draw();
 
         setTimeout(() => {
+            this.y = 0;
+            this.draw();
             if (super.isDead()) return;
-            this.element.classList.remove('jump');
             this.element.src = "assets/images/goku-running.gif";
-        }, 600);
+         }, 400);
     }
 
     dead() {

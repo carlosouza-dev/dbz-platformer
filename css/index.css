@@ -57,8 +57,8 @@ body {
 
 .persona {
     position: absolute;
-    bottom: 0;
     width: 100px;
+    transition: bottom ease-out 0.3s;
 }
 
 .jump {
@@ -72,6 +72,8 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+
+    transition: left ease, bottom ease;
 }
 
 .pause {

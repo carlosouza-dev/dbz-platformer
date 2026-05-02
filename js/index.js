@@ -19,15 +19,16 @@ const loopScore = setInterval(() => {
         clearInterval(loopScore);
     }
     score.increase();
+
+    if (score.getScore() % 10 == 0){
+            speed += 1;
+    }
 }, 1000);
 
 function createEnergyBall(){
     const obstacle = new EnergyBall(speed);
 
-    speed += 2;
-
     energyBalls.push(obstacle);
-    console.log(energyBalls.length);
 
     if (energyBalls.length >= 10){
         energyBalls.splice(1, 1);
@@ -40,9 +41,7 @@ function gameLoop(){
 
         energyBall.update();
 
-        const personaPosition = Number(window.getComputedStyle(persona).bottom.replace("px", ""));
-
-        if (energyBall.x < 70 && energyBall.x > 0 && energyBall.y < 100 && personaPosition < 60){
+        if (checkCollision(goku, energyBall)){
             energyBalls.forEach((energyBall) => energyBall.destroy());
             goku.dead();
 
@@ -56,6 +55,35 @@ function gameLoop(){
     if (!goku.isDead()){
         requestAnimationFrame(gameLoop)
     }
+}
+
+function checkCollision(persona, obstacle) {
+    const p = persona.element.getBoundingClientRect();
+    const o = obstacle.element.getBoundingClientRect();
+
+    const personaPadding = 20; 
+    const obstaclePadding = 10; 
+
+    const pBox = {
+        left: p.left + personaPadding + 10,
+        right: p.right - personaPadding,
+        top: p.top,
+        bottom: p.bottom
+    };
+
+    const oBox = {
+        left: o.left,
+        right: o.right - obstaclePadding,
+        top: o.top + obstaclePadding,
+        bottom: o.bottom - obstaclePadding
+    };
+
+    return !(
+        pBox.right < oBox.left || 
+        pBox.left > oBox.right || 
+        pBox.bottom < oBox.top || 
+        pBox.top > oBox.bottom
+    );
 }
 
 const loop = setInterval(createEnergyBall, 2000);
