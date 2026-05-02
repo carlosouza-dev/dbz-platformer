@@ -1,4 +1,5 @@
 let explosionAudio = new Audio('assets/audios/energy-collision.mp3');
+let powerAudio = new Audio('assets/audios/power-sound.mp3')
 const audio = document.querySelector('.audio');
 let speed = 10;
 

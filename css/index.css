@@ -73,7 +73,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
 
-    transition: left ease, bottom ease;
+    transition: left ease 0.1s, bottom ease-in 0.25s;
 }
 
 .pause {
