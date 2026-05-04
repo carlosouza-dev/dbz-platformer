@@ -22,7 +22,7 @@ class EnergyBall extends Obstacle {
     update(){
         this.x -= this.#speed;
 
-        if (this.#falseBehavior && !this.#changed && this.x <= (window.innerWidth / 2) + 100){
+        if (this.#falseBehavior && !this.#changed && this.x < window.innerWidth / 2){
             this.#changed = true;
 
             if (this.y === this.#heights[0]) {
