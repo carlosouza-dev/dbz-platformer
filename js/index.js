@@ -9,11 +9,18 @@ let energyBalls = [];
 const persona = document.querySelector('.persona');
 const score = Score.instance();
 
+let buttomPressed = false;
+
 document.addEventListener('keydown', (event) => {
-    if (event.code == 'Space'){
+    if (event.code == 'Space' && !buttomPressed){
+        buttomPressed = true;
         goku.jump();
     }
 });
+
+document.addEventListener('keyup', (event) => {
+    buttomPressed = false;
+})
 
 const loopScore = setInterval(() => {
     if (goku.isDead()){
@@ -34,7 +41,6 @@ function createEnergyBall(){
     if (energyBalls.length >= 10){
         energyBalls.splice(1, 1);
     }
-    
 }
 
 function gameLoop(){

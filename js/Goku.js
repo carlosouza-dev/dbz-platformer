@@ -5,6 +5,7 @@ class Goku extends Persona {
     #deadingImgPath;
     #screamAudio;
     #jumpAudio;
+    #isJumping;
 
     constructor() {
         super('.persona');
@@ -17,12 +18,13 @@ class Goku extends Persona {
         this.#jumpAudio = new Audio('./assets/audios/goku-jump.mp3');
 
         this.element.src = this.#runningImgPath;
-
+        this.#isJumping = false;
     }
 
     jump() {
-        if (super.isDead()) return;
+        if (super.isDead() || this.#isJumping) return;
 
+        this.#isJumping = true;
         this.element.src = this.#jumpingImgPath;
         this.#jumpAudio.play();
         this.y = 90;
@@ -33,6 +35,9 @@ class Goku extends Persona {
             this.draw();
             if (super.isDead()) return;
             this.element.src = "assets/images/goku-running.gif";
+            setTimeout(() => {
+                this.#isJumping = false;
+            }, 250) //sincroniza com o tempo de animação css
          }, 400);
     }
 
@@ -45,5 +50,4 @@ class Goku extends Persona {
 
         
     }
-
 }
